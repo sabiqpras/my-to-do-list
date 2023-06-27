@@ -4,6 +4,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const _ = require("lodash");
+const mongooseUrl = process.env.MONGOOSE_URL;
 
 const app = express();
 
@@ -13,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
 // connect to mongoose
-mongoose.connect("mongodb+srv://admin-sabiq:Sabiq123@cluster0.bp8ikap.mongodb.net/todolistDB", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(`${mongooseUrl}`, { useNewUrlParser: true, useUnifiedTopology: true });
 console.log("connected to the server");
 
 // item schema for todolistDB
